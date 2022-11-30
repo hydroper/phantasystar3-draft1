@@ -35,16 +35,16 @@ export default class MainMenuScene extends MainScene {
         this.m_mainTextArea.style['flex-direction'] = 'column';
         this.m_mainTextArea.style['gap'] = '5px';
         this.m_mainTextArea.style.position = 'absolute';
-        this.m_mainTextArea.style.left = `${ProjectSettings.centerX(500)}px`;
-        this.m_mainTextArea.style.top = `${ProjectSettings.centerY(500) + 200}px`;
         this.m_mainTextArea.style.width = `500px`;
+        this.container.appendChild(this.m_mainTextArea);
+        this.m_mainTextArea.style.left = `${ProjectSettings.centerX(this.m_mainTextArea.offsetWidth)}px`;
+        this.m_mainTextArea.style.top = `${ProjectSettings.centerY(500) + 200}px`;
         this.m_mainTextArea.innerHTML = `
             <button class="btn" style="text-align: left">Start Game</button>
             <button class="btn" style="text-align: left">Continue</button>
             <button class="btn" style="text-align: left">Settings</button>
             <button class="btn" style="text-align: left">Exit Game</button>
         `;
-        this.container.appendChild(this.m_mainTextArea);
     }
 
     destroy() {
