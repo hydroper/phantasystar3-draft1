@@ -3,7 +3,6 @@ import ProjectSettings from '../ProjectSettings.js';
 export default class MainScene {
     constructor() {
         this.container = document.createElement('div');
-        this.initialize();
     }
 
     initialize() {

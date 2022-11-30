@@ -1,6 +1,6 @@
 const ProjectSettings = {
-    width: 1500,
-    height: 900,
+    width: 800,
+    height: 600,
     frameRate: 60,
 
     centerX(forItemWidth = 0) {

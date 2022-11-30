@@ -1,6 +1,6 @@
 # Phantasy Star III
 
-Improvement of the title _Phantasy Star III: Generations of Doom_ in HTML.
+_Phantasy Star III: Generations of Doom_ in HTML.
 
 ## Serve locally
 
