@@ -12,6 +12,9 @@ class Main {
         window.addEventListener('resize', evt => {
             this.resizeWindow();
         });
+        window.addEventListener('orientationchange', evt => {
+            this.resizeWindow();
+        });
         new Preloader;
     }
 
