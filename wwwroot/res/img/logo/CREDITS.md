@@ -1,1 +1,3 @@
-Credits to www.gamescanner.org for creating the logo. Slightly changed to white.
+# Credits
+
+Credits to www.gamescanner.org for creating the logo. Modified to white color.

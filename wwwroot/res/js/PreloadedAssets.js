@@ -3,7 +3,10 @@ const PreloadedAssets = {
      * Image element.
      */
     logo: null,
-
+    /**
+     * SVG object element.
+     */
+    segaLogo: null,
     /**
      * Image element.
      */
@@ -19,6 +22,7 @@ const PreloadedAssets = {
 
     initializeMisc(loadQueue) {
         PreloadedAssets.logo = loadQueue.getResult('logo');
+        PreloadedAssets.segaLogo = loadQueue.getResult('segaLogo');
     },
 
     initializeOverworldSheets(loadQueue) {

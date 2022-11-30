@@ -1,4 +1,5 @@
 import MainScene from './MainScene.js';
+import BrandPresents from './BrandPresents.js';
 import ProjectSettings from '../ProjectSettings.js';
 import PreloadedAssets from '../PreloadedAssets.js';
 
@@ -16,7 +17,8 @@ export default class Preloader extends MainScene {
         super.initialize();
         this.container.innerHTML = `<div class="textarea" style="width: 300px" id="preloadingAdvice"></div>`;
 
-        this.m_queue.loadFile({id: 'overworldGeneration1', src: 'res/img/logo/logo.png'});
+        this.m_queue.loadFile({id: 'logo', src: 'res/img/logo/logo.png'});
+        this.m_queue.loadFile({id: 'segaLogo', src: 'res/img/segalogo/logo.svg'});
         this.m_queue.loadFile({id: 'overworldGeneration1', src: 'res/img/overworldcharacters/generation1.png'});
         this.m_queue.loadFile({id: 'overworldGeneration2', src: 'res/img/overworldcharacters/generation2.png'});
         this.m_queue.loadFile({id: 'overworldGeneration3', src: 'res/img/overworldcharacters/generation3.png'});
@@ -38,6 +40,8 @@ export default class Preloader extends MainScene {
         }
         PreloadedAssets.initializeMisc(this.m_queue);
         PreloadedAssets.initializeOverworldSheets(this.m_queue);
+        this.destroy();
+        new BrandPresents;
     }
 
     queue_onError(evt) {
