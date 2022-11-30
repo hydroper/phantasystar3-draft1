@@ -21,7 +21,11 @@ const PreloadedAssets = {
     overworldGeneration3: null,
 
     initializeMisc(loadQueue) {
+        // logo
         PreloadedAssets.logo = loadQueue.getResult('logo');
+        PreloadedAssets.logo.draggable = false;
+
+        // segaLogo
         PreloadedAssets.segaLogo = loadQueue.getResult('segaLogo');
     },
 
