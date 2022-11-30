@@ -28,4 +28,17 @@
 
 html, body {
     background: #555;
+    color: #fff;
+    font-family: "Verdana";
+    font-size: 23px;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    cursor: default;
+}
+
+.textarea {
+    border: 5px solid #73B3C9;
+    background: #255665;
+    padding: 15px;
 }

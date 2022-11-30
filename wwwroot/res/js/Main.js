@@ -1,4 +1,5 @@
 import ProjectSettings from './ProjectSettings.js';
+import Preloader from './mainScenes/Preloader.js';
 
 class Main {
     constructor() {
@@ -11,6 +12,7 @@ class Main {
         window.addEventListener('resize', evt => {
             this.resizeWindow();
         });
+        new Preloader;
     }
 
     resizeWindow() {
