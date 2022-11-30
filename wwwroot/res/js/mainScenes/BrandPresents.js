@@ -14,7 +14,7 @@ export default class BrandPresents extends MainScene {
         let segaLogo = PreloadedAssets.segaLogo.cloneNode(true);
         this.container.style.transition = 'opacity 0.5s';
         this.container.style.opacity = '0';
-        this.container.innerHTML = '<span style="position: absolute">THIS FAN GAME CONTAINS PROPERTIES OWNED BY</span>';
+        this.container.innerHTML = '<span style="position: absolute">THIS FAN GAME INCLUDES PROPERTIES OWNED BY</span>';
         this.container.children[0].style.left = `${ProjectSettings.centerX(this.container.children[0].offsetWidth)}px`;
         this.container.children[0].style.top = `${ProjectSettings.centerY(this.container.children[0].offsetHeight) - 100}px`;
         this.container.appendChild(segaLogo);

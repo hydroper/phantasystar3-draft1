@@ -40,8 +40,10 @@ export default class Preloader extends MainScene {
         }
         PreloadedAssets.initializeMisc(this.m_queue);
         PreloadedAssets.initializeOverworldSheets(this.m_queue);
-        this.destroy();
-        new BrandPresents;
+        setTimeout(() => {
+            this.destroy();
+            new BrandPresents;
+        }, 500);
     }
 
     queue_onError(evt) {

@@ -57,6 +57,11 @@ html, body {
     outline: 0;
 }
 
+.btn-primary {
+    background: #3b6877;
+    border: 5px solid #477b8d;
+}
+
 .btn:hover, .btn:focus {
     border: 5px solid #73B3C9;
     color: #fff;
