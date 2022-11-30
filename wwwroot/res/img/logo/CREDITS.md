@@ -1,0 +1,1 @@
+Credits to www.gamescanner.org for creating the logo. Slightly changed to white.
