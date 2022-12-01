@@ -5,6 +5,10 @@ export default class MainScene {
         this.container = document.createElement('div');
         this.messageDialogElement = null;
         this.messageDialogIntervalId = -1;
+
+        this.cutscene_skipListener = null;
+        this.cutscene_timeoutFunction = null;
+        this.cutscene_timeoutId = -1;
     }
 
     initialize() {
@@ -22,6 +26,16 @@ export default class MainScene {
     }
 
     tick() {
+    }
+
+    cutscene_clearPart() {
+        clearInterval(this.cutscene_timeoutId);
+        this.cutscene_timeoutId = -1;
+        this.cutscene_timeoutFunction = null;
+    }
+
+    cutscene_nextPart(fn, nextPartMilli = 1000) {
+        this.cutscene_timeoutId = setTimeout(this.cutscene_timeoutFunction = fn, nextPartMilli);
     }
 
     showMessageDialog(text) {

@@ -9,47 +9,42 @@ import {focusNextElement, focusPrevElement} from '../focuslock/index.js';
 export default class GameplayScene extends MainScene {
     constructor(slotNum) {
         super();
-        this.introduction1_skipListener = null;
-        this.introduction1_timeoutFunction = null;
-        this.introduction1_timeoutId = -1;
         this.initialize(slotNum);
     }
 
     initialize(slotNum) {
         super.initialize();
         if (isNaN(slotNum)) {
-            this.introduction1_show();
+            this.cutscene1_show();
         }
     }
 
-    introduction1_show() {
+    cutscene1_show() {
         document.body.parentElement.setAttribute('outer-space', 'true');
         document.body.setAttribute('outer-space', 'true');
 
-        window.addEventListener('keyup', this.introduction1_skipListener = e => {
+        window.addEventListener('keyup', this.cutscene_skipListener = e => {
             // skip part
-            if (PlayerPersonalSettings.keyboardSettings.cancelOrSkip.indexOf(e.keyCode) != -1 && this.introduction1_timeoutFunction != null) {
-                clearTimeout(this.introduction1_timeoutId);
-                this.introduction1_timeoutFunction();
+            if (PlayerPersonalSettings.keyboardSettings.cancelOrSkip.indexOf(e.keyCode) != -1 && this.cutscene_timeoutFunction != null) {
+                clearTimeout(this.cutscene_timeoutId);
+                this.cutscene_timeoutFunction();
             }
         });
 
-        this.introduction1_nextPart(() => {
+        /*
+        this.cutscene_nextPart(() => {
+            this.cutscene_clearPart();
             //
-        });
+        }, 7000);
+        */
+
+        this.cutscene_nextPart(() => {
+            this.cutscene_clearPart();
+            //
+        }, 7000);
     }
 
-    introduction1_clearPart() {
-        clearInterval(this.introduction1_timeoutId);
-        this.introduction1_timeoutId = -1;
-        this.introduction1_timeoutFunction = null;
-    }
-
-    introduction1_nextPart(fn, nextPartMilli = 1000) {
-        this.introduction1_timeoutId = setTimeout(this.introduction1_timeoutFunction = fn, nextPartMilli);
-    }
-
-    introduction1_end() {
+    cutscene1_end() {
         this.container.innerHTML = '';
         window.removeEventListener('keyup', this.introduction1_skipListener);
         this.introduction1_skipListener = null;
