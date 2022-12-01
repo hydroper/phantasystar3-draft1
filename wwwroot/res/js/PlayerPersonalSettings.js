@@ -5,7 +5,7 @@ const PlayerPersonalSettings = {
         up: [38, 87],
         down: [40, 83],
         attackOrOK: [90, 74],
-        cancel: [88, 75],
+        cancelOrSkip: [88, 75],
     },
 };
 

@@ -1,3 +1,5 @@
+import {createVideoFromBinary} from './util/VideoHelpers.js';
+
 const PreloadedAssets = {
     /**
      * Image element.
@@ -20,6 +22,15 @@ const PreloadedAssets = {
      */
     overworldGeneration3: null,
 
+    /**
+     * Image element.
+     */
+    story1_orakioVersusLaya: null,
+    /**
+     * Video element.
+     */
+    story1_womanOnBeach: null,
+
     initializeMisc(loadQueue) {
         // logo
         PreloadedAssets.logo = loadQueue.getResult('logo');
@@ -27,6 +38,14 @@ const PreloadedAssets = {
 
         // segaLogo
         PreloadedAssets.segaLogo = loadQueue.getResult('segaLogo');
+
+        // story1_orakioVersusLaya
+        PreloadedAssets.story1_orakioVersusLaya = loadQueue.getResult('story1.orakioVersusLaya');
+
+        // story1_womanOnBeach
+        PreloadedAssets.story1_womanOnBeach = createVideoFromBinary(loadQueue.getResult('story1.womanOnBeach'));
+        PreloadedAssets.story1_womanOnBeach.width = 608;
+        PreloadedAssets.story1_womanOnBeach.height = 380;
     },
 
     initializeOverworldSheets(loadQueue) {

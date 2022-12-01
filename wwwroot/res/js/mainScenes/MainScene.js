@@ -3,6 +3,8 @@ import ProjectSettings from '../ProjectSettings.js';
 export default class MainScene {
     constructor() {
         this.container = document.createElement('div');
+        this.messageDialogElement = null;
+        this.messageDialogIntervalId = -1;
     }
 
     initialize() {
@@ -20,5 +22,43 @@ export default class MainScene {
     }
 
     tick() {
+    }
+
+    showMessageDialog(text) {
+        if (this.messageDialogIntervalId != -1) {
+            clearInterval(this.messageDialogIntervalId);
+            this.messageDialogIntervalId = -1;
+        }
+        if (this.messageDialogElement != null) {
+            this.messageDialogElement.remove();
+            this.messageDialogElement = null;
+        }
+        this.messageDialogElement = $(`<div class="message-dialog" style="
+            position: absolute; width: 470px; height: 50px;
+        "></div>`).get(0);
+        this.container.appendChild(this.messageDialogElement);
+        this.messageDialogElement.style.left = `${ProjectSettings.centerX(this.messageDialogElement.offsetWidth)}px`;
+        this.messageDialogElement.style.top = `${ProjectSettings.height - this.messageDialogElement.offsetHeight - 30}px`;
+        let split = text.split('');
+        this.messageDialogIntervalId = setInterval(() => {
+            if (split.length == 0) {
+                clearInterval(this.messageDialogIntervalId);
+                this.messageDialogIntervalId = -1;
+                return;
+            }
+            let s = split.shift();
+            this.messageDialogElement.innerText += s == ' ' ? ' ' + split.shift() : s;
+        }, 10);
+    }
+
+    hideMessageDialog() {
+        if (this.messageDialogIntervalId != -1) {
+            clearInterval(this.messageDialogIntervalId);
+            this.messageDialogIntervalId = -1;
+        }
+        if (this.messageDialogElement != null) {
+            this.messageDialogElement.remove();
+            this.messageDialogElement = null;
+        }
     }
 }

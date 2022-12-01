@@ -17,6 +17,8 @@ export default class Preloader extends MainScene {
         super.initialize();
         this.container.innerHTML = `<div class="textarea" style="width: 300px" id="preloadingAdvice"></div>`;
 
+        this.m_queue.loadFile({id: 'story1.orakioVersusLaya', src: 'res/img/story1/orakio-versus-laya-1.png'});
+        this.m_queue.loadFile({id: 'story1.womanOnBeach', src: 'res/img/story1/woman-on-beach.mp4', type: createjs.AbstractLoader.BINARY});
         this.m_queue.loadFile({id: 'logo', src: 'res/img/logo/logo.png'});
         this.m_queue.loadFile({id: 'segaLogo', src: 'res/img/segalogo/logo.svg'});
         this.m_queue.loadFile({id: 'overworldGeneration1', src: 'res/img/overworldcharacters/generation1.png'});
