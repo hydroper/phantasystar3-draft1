@@ -38,10 +38,22 @@ export default class GameplayScene extends MainScene {
         }, 7000);
         */
 
+        let outerSpaceImg = cloneImage(PreloadedAssets.cutscenes_outerspace1);
+        outerSpaceImg.style.position = 'absolute';
+        this.container.appendChild(outerSpaceImg);
+        outerSpaceImg.style.width = `${ProjectSettings.width}px`;
+        outerSpaceImg.style.height = `${ProjectSettings.height}px`;
+        outerSpaceImg.style.transition = `opacity 0.5s`;
+        outerSpaceImg.style.opacity = '0';
+
         this.cutscene_nextPart(() => {
             this.cutscene_clearPart();
-            //
-        }, 7000);
+            outerSpaceImg.style.opacity = '1';
+            this.cutscene_nextPart(() => {
+                this.cutscene_clearPart();
+                //
+            }, 7000);
+        }, 1000);
     }
 
     cutscene1_end() {

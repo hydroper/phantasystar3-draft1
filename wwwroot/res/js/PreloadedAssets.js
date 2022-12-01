@@ -25,11 +25,15 @@ const PreloadedAssets = {
     /**
      * Image element.
      */
-    story1_orakioVersusLaya: null,
+    cutscenes_orakioVersusLaya: null,
     /**
      * Video element.
      */
-    story1_womanOnBeach: null,
+    cutscenes_womanOnBeach: null,
+    /**
+     * Image element.
+     */
+    cutscenes_outerspace1: null,
 
     initializeMisc(loadQueue) {
         // logo
@@ -39,13 +43,16 @@ const PreloadedAssets = {
         // segaLogo
         PreloadedAssets.segaLogo = loadQueue.getResult('segaLogo');
 
-        // story1_orakioVersusLaya
-        PreloadedAssets.story1_orakioVersusLaya = loadQueue.getResult('story1.orakioVersusLaya');
+        // cutscenes_orakioVersusLaya
+        PreloadedAssets.cutscenes_orakioVersusLaya = loadQueue.getResult('cutscenes.orakioVersusLaya');
 
-        // story1_womanOnBeach
-        PreloadedAssets.story1_womanOnBeach = createVideoFromBinary(loadQueue.getResult('story1.womanOnBeach'));
-        PreloadedAssets.story1_womanOnBeach.width = 608;
-        PreloadedAssets.story1_womanOnBeach.height = 380;
+        // cutscenes_womanOnBeach
+        PreloadedAssets.cutscenes_womanOnBeach = createVideoFromBinary(loadQueue.getResult('cutscenes.womanOnBeach'));
+        PreloadedAssets.cutscenes_womanOnBeach.width = 608;
+        PreloadedAssets.cutscenes_womanOnBeach.height = 380;
+
+        // cutscenes_outerspace1
+        PreloadedAssets.cutscenes_outerspace1 = loadQueue.getResult('cutscenes.outerspace1');
     },
 
     initializeOverworldSheets(loadQueue) {

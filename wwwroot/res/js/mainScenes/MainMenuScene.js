@@ -27,7 +27,7 @@ export default class MainMenuScene extends MainScene {
             }
         });
 
-        let orakioVersusLayaImg = cloneImage(PreloadedAssets.story1_orakioVersusLaya);
+        let orakioVersusLayaImg = cloneImage(PreloadedAssets.cutscenes_orakioVersusLaya);
         this.container.appendChild(orakioVersusLayaImg);
         orakioVersusLayaImg.style.opacity = '0';
         orakioVersusLayaImg.style.transition = 'opacity 0.5s';
@@ -59,7 +59,7 @@ export default class MainMenuScene extends MainScene {
         this.cutscene_nextPart(() => {
             this.cutscene_clearPart();
             orakioVersusLayaImg.remove();
-            let womanOnBeachVideo = PreloadedAssets.story1_womanOnBeach.cloneNode(true);
+            let womanOnBeachVideo = PreloadedAssets.cutscenes_womanOnBeach.cloneNode(true);
             womanOnBeachVideo.setAttribute('autoplay', 'true');
             womanOnBeachVideo.setAttribute('loop', 'true');
             this.container.appendChild(womanOnBeachVideo);
