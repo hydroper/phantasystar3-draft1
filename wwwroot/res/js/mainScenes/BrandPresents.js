@@ -1,5 +1,6 @@
 import MainScene from './MainScene.js';
 import MainMenuScene from './MainMenuScene.js';
+import GameplayScene from './GameplayScene.js';
 import ProjectSettings from '../ProjectSettings.js';
 import PreloadedAssets from '../PreloadedAssets.js';
 
@@ -28,7 +29,7 @@ export default class BrandPresents extends MainScene {
                 this.container.style.opacity = '0';
                 setTimeout(() => {
                     this.destroy();
-                    new MainMenuScene;
+                    new MainMenuScene(GameplayScene);
                 }, 500);
             }, 2000);
         }, 500);

@@ -1,14 +1,18 @@
 import MainScene from './MainScene.js';
 import ProjectSettings from '../ProjectSettings.js';
 import PreloadedAssets from '../PreloadedAssets.js';
+import PlayerPersonalSettings from '../PlayerPersonalSettings.js';
 import {cloneImage} from '../util/ImageHelpers.js';
+import {focusNextElement, focusPrevElement} from '../focuslock/index.js';
 
 export default class MainMenuScene extends MainScene {
-    constructor() {
+    constructor(gameplaySceneClass) {
         super();
         this.initialize();
+        this.m_keyPressListener = null;
         this.m_mainTextArea = null;
         this.m_startGameTextArea = null;
+        this.m_gameplaySceneClass = gameplaySceneClass;
     }
 
     initialize() {
@@ -45,14 +49,35 @@ export default class MainMenuScene extends MainScene {
             <button class="btn" id="startGameBtn" style="text-align: left">Start Game</button>
             <button class="btn" id="exitGameBtn" style="text-align: left">Exit Game</button>
         `;
+        window.addEventListener('keyup', this.m_keyPressListener = e => {
+            // up
+            if (PlayerPersonalSettings.keyboardSettings.up.indexOf(e.keyCode) != -1) {
+                if (document.querySelector(':focus') != null) {
+                    focusPrevElement(document.activeElement);
+                } else document.getElementById('startGameBtn').focus();
+            }
+            // down
+            else if (PlayerPersonalSettings.keyboardSettings.down.indexOf(e.keyCode) != -1) {
+                if (document.querySelector(':focus') != null) {
+                    focusNextElement(document.activeElement);
+                } else document.getElementById('startGameBtn').focus();
+            }
+        });
         document.getElementById('startGameBtn').addEventListener('click', () => {
-            this.m_mainTextArea.remove();
-            this.m_mainTextArea = null;
+            this.mainTextArea_hide();
             this.startGameTextArea_show();
         });
         document.getElementById('exitGameBtn').addEventListener('click', () => {
             window.close();
         });
+    }
+
+    mainTextArea_hide() {
+        this.m_mainTextArea.remove();
+        this.m_mainTextArea = null;
+
+        window.removeEventListener('keyup', this.m_keyPressListener);
+        this.m_keyPressListener = null;
     }
 
     startGameTextArea_show() {
@@ -71,18 +96,43 @@ export default class MainMenuScene extends MainScene {
         this.m_startGameTextArea.style.top = `${ProjectSettings.centerY(500) + 200}px`;
         this.m_startGameTextArea.innerHTML = `
             <div style="display: flex; flex-direction: column; gap: 5px; overflow-x: scroll; width: 600px">
-                <button class="btn btn-primary" style="width: 130px; height: 100px; text-align: left">New Game</button>
+                <button class="btn btn-primary" id="newGameBtn" style="width: 130px; height: 100px; text-align: left">New Game</button>
                 ${
                     [].map(slot => `<button class="btn" style="width: 130px; height: 100px; text-align: left">n</button>`)
                 }
             </div>
-            <button class="btn" id="backBtn" style="text-align: left">🠔 Back</button>
+            <button class="btn" id="backBtn" style="text-align: left">Back</button>
         `;
+        window.addEventListener('keyup', this.m_keyPressListener = e => {
+            // up
+            if (PlayerPersonalSettings.keyboardSettings.up.indexOf(e.keyCode) != -1) {
+                if (document.querySelector(':focus') != null) {
+                    focusPrevElement(document.activeElement);
+                } else document.getElementById('backBtn').focus();
+            }
+            // down
+            else if (PlayerPersonalSettings.keyboardSettings.down.indexOf(e.keyCode) != -1) {
+                if (document.querySelector(':focus') != null) {
+                    focusNextElement(document.activeElement);
+                } else document.getElementById('backBtn').focus();
+            }
+        });
+        document.getElementById('newGameBtn').addEventListener('click', () => {
+            this.destroy();
+            new this.m_gameplaySceneClass(NaN);
+        });
         document.getElementById('backBtn').addEventListener('click', () => {
-            this.m_startGameTextArea.remove();
-            this.m_startGameTextArea = null;
+            this.startGameTextArea_hide();
             this.mainTextArea_show();
         });
+    }
+
+    startGameTextArea_hide() {
+        this.m_startGameTextArea.remove();
+        this.m_startGameTextArea = null;
+
+        window.removeEventListener('keyup', this.m_keyPressListener);
+        this.m_keyPressListener = null;
     }
 
     destroy() {
