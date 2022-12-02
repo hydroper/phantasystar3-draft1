@@ -1,5 +1,5 @@
 import MainScene from '../MainScene.js';
-import MainMenuScene from '../MainMenuScene.js';
+import MainMenuScene from '../mainMenu/MainMenuScene.js';
 import ProjectSettings from '../../ProjectSettings.js';
 import PreloadedAssets from '../../PreloadedAssets.js';
 import PlayerPersonalSettings from '../../PlayerPersonalSettings.js';

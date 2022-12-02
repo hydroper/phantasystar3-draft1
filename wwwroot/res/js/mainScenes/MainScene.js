@@ -75,7 +75,7 @@ export default class MainScene {
         this.cutscene_timeoutFunction = null;
     }
 
-    cutscene_nextPart(fn, nextPartMilli = 1000) {
+    cutscene_nextPart(fn, nextPartMilli = 24 * 60 * 60 * 1000) {
         this.cutscene_timeoutId = setTimeout(this.cutscene_timeoutFunction = fn, nextPartMilli);
     }
 
@@ -107,7 +107,7 @@ export default class MainScene {
             }
             let s = split.shift();
             this.messageDialogElement.innerText += s == ' ' ? ' ' + split.shift() : s;
-        }, 10);
+        }, 7);
     }
 
     hideMessageDialog() {

@@ -84,8 +84,8 @@ function cutscene1Dot2_show(scene, outerSpaceImg) {
                         cutscene1Dot3_show(scene, outerSpaceImg);
                     }, 2000);
                 }, 9000);
-            }, 1000);
-        }, 500);
+            }, 1500);
+        }, 1500);
     }, 500);
 }
 
