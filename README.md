@@ -15,3 +15,5 @@ Then run the following command to serve this project at `http://localhost:8080`:
 ```
 sirv --dev --port 8080 wwwroot
 ```
+
+Or run simply `serve` from current working directory.

@@ -19,15 +19,7 @@ export default class MainMenuScene extends MainScene {
     initialize() {
         super.initialize();
 
-        window.addEventListener('keyup', this.cutscene_skipListener = e => {
-            // skip part
-            if (PlayerPersonalSettings.keyboardSettings.cancelOrSkip.indexOf(e.keyCode) != -1 && this.cutscene_timeoutFunction != null) {
-                clearTimeout(this.cutscene_timeoutId);
-                this.cutscene_timeoutFunction();
-            }
-        });
-
-        this.cutscene_showSkipButton();
+        this.cutscene_configBegin();
 
         let orakioVersusLayaImg = cloneImage(PreloadedAssets.cutscenes_orakioVersusLaya);
         this.container.appendChild(orakioVersusLayaImg);
@@ -104,9 +96,7 @@ export default class MainMenuScene extends MainScene {
 
     cutscene_end() {
         this.container.innerHTML = '';
-        window.removeEventListener('keyup', this.cutscene_skipListener);
-        this.cutscene_skipListener = null;
-        this.cutscene_hideSkipButton();
+        this.cutscene_configEnd();
 
         this.afterCutscene_show();
     }

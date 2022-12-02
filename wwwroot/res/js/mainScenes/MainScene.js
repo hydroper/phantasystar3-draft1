@@ -31,6 +31,24 @@ export default class MainScene {
     tick() {
     }
 
+    cutscene_configBegin() {
+        window.addEventListener('keyup', this.cutscene_skipListener = e => {
+            // skip part
+            if (PlayerPersonalSettings.keyboardSettings.cancelOrSkip.indexOf(e.keyCode) != -1 && this.cutscene_timeoutFunction != null) {
+                clearTimeout(this.cutscene_timeoutId);
+                this.cutscene_timeoutFunction();
+            }
+        });
+    
+        this.cutscene_showSkipButton();
+    }
+
+    cutscene_configEnd() {
+        window.removeEventListener('keyup', this.cutscene_skipListener);
+        this.cutscene_skipListener = null;
+        this.cutscene_hideSkipButton();
+    }
+
     cutscene_showSkipButton() {
         if (this.cutscene_skipButton != null || /*!mobileAndTabletCheck()*/ false) {
             return;
@@ -59,6 +77,10 @@ export default class MainScene {
 
     cutscene_nextPart(fn, nextPartMilli = 1000) {
         this.cutscene_timeoutId = setTimeout(this.cutscene_timeoutFunction = fn, nextPartMilli);
+    }
+
+    get messageDialogIsOpen() {
+        return this.messageDialogElement != null;
     }
 
     showMessageDialog(text) {
