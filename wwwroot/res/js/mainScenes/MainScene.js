@@ -7,6 +7,7 @@ export default class MainScene {
         this.container = document.createElement('div');
         this.messageDialogElement = null;
         this.messageDialogIntervalId = -1;
+        this.messageDialogRemaining = [];
 
         this.cutscene_skipListener = null;
         this.cutscene_timeoutFunction = null;
@@ -35,8 +36,12 @@ export default class MainScene {
         window.addEventListener('keyup', this.cutscene_skipListener = e => {
             // skip part
             if (PlayerPersonalSettings.keyboardSettings.cancelOrSkip.indexOf(e.key.toUpperCase()) != -1 && this.cutscene_timeoutFunction != null) {
-                clearTimeout(this.cutscene_timeoutId);
-                this.cutscene_timeoutFunction();
+                if (this.messageDialogIntervalId != -1) {
+                    this.jumpToMessageDialogEnd();
+                } else {
+                    clearTimeout(this.cutscene_timeoutId);
+                    this.cutscene_timeoutFunction();
+                }
             }
         });
     
@@ -86,6 +91,15 @@ export default class MainScene {
         return this.messageDialogElement != null;
     }
 
+    jumpToMessageDialogEnd() {
+        if (this.messageDialogIntervalId == -1) {
+            return;
+        }
+        this.messageDialogElement.innerText += this.messageDialogRemaining.join('');
+        clearInterval(this.messageDialogIntervalId);
+        this.messageDialogIntervalId = -1;
+    }
+
     showMessageDialog(text) {
         if (this.messageDialogIntervalId != -1) {
             clearInterval(this.messageDialogIntervalId);
@@ -102,6 +116,7 @@ export default class MainScene {
         this.messageDialogElement.style.left = `${ProjectSettings.centerX(this.messageDialogElement.offsetWidth)}px`;
         this.messageDialogElement.style.top = `${ProjectSettings.height - this.messageDialogElement.offsetHeight - 30}px`;
         let split = text.split('');
+        this.messageDialogRemaining = split;
         this.messageDialogIntervalId = setInterval(() => {
             if (split.length == 0) {
                 clearInterval(this.messageDialogIntervalId);
@@ -110,7 +125,7 @@ export default class MainScene {
             }
             let s = split.shift();
             this.messageDialogElement.innerText += s == ' ' ? ' ' + split.shift() : s;
-        }, 7);
+        }, 15);
     }
 
     hideMessageDialog() {
