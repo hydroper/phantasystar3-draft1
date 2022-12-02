@@ -57,13 +57,13 @@ export default class MainMenuScene extends MainScene {
         `;
         window.addEventListener('keyup', this.m_keyPressListener = e => {
             // up
-            if (PlayerPersonalSettings.keyboardSettings.up.indexOf(e.keyCode) != -1) {
+            if (PlayerPersonalSettings.keyboardSettings.up.indexOf(e.key.toUpperCase()) != -1) {
                 if (document.querySelector(':focus') != null) {
                     focusPrevElement(document.activeElement);
                 } else document.getElementById('startGameBtn').focus();
             }
             // down
-            else if (PlayerPersonalSettings.keyboardSettings.down.indexOf(e.keyCode) != -1) {
+            else if (PlayerPersonalSettings.keyboardSettings.down.indexOf(e.key.toUpperCase()) != -1) {
                 if (document.querySelector(':focus') != null) {
                     focusNextElement(document.activeElement);
                 } else document.getElementById('startGameBtn').focus();
@@ -112,18 +112,23 @@ export default class MainMenuScene extends MainScene {
         `;
         window.addEventListener('keyup', this.m_keyPressListener = e => {
             // up/left
-            if (PlayerPersonalSettings.keyboardSettings.up.indexOf(e.keyCode) != -1
-            ||  PlayerPersonalSettings.keyboardSettings.left.indexOf(e.keyCode) != -1) {
+            if (PlayerPersonalSettings.keyboardSettings.up.indexOf(e.key.toUpperCase()) != -1
+            ||  PlayerPersonalSettings.keyboardSettings.left.indexOf(e.key.toUpperCase()) != -1) {
                 if (document.querySelector(':focus') != null) {
                     focusPrevElement(document.activeElement);
                 } else document.getElementById('backBtn').focus();
             }
             // down/right
-            else if (PlayerPersonalSettings.keyboardSettings.down.indexOf(e.keyCode) != -1
-            ||  PlayerPersonalSettings.keyboardSettings.right.indexOf(e.keyCode) != -1) {
+            else if (PlayerPersonalSettings.keyboardSettings.down.indexOf(e.key.toUpperCase()) != -1
+            ||  PlayerPersonalSettings.keyboardSettings.right.indexOf(e.key.toUpperCase()) != -1) {
                 if (document.querySelector(':focus') != null) {
                     focusNextElement(document.activeElement);
                 } else document.getElementById('backBtn').focus();
+            }
+            // cancel
+            else if (PlayerPersonalSettings.keyboardSettings.cancelOrSkip.indexOf(e.key.toUpperCase()) != -1) {
+                this.startGameTextArea_hide();
+                this.mainTextArea_show();
             }
         });
         document.getElementById('newGameBtn').addEventListener('click', () => {

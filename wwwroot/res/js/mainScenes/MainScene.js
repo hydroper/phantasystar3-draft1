@@ -34,7 +34,7 @@ export default class MainScene {
     cutscene_configBegin() {
         window.addEventListener('keyup', this.cutscene_skipListener = e => {
             // skip part
-            if (PlayerPersonalSettings.keyboardSettings.cancelOrSkip.indexOf(e.keyCode) != -1 && this.cutscene_timeoutFunction != null) {
+            if (PlayerPersonalSettings.keyboardSettings.cancelOrSkip.indexOf(e.key.toUpperCase()) != -1 && this.cutscene_timeoutFunction != null) {
                 clearTimeout(this.cutscene_timeoutId);
                 this.cutscene_timeoutFunction();
             }
@@ -56,7 +56,7 @@ export default class MainScene {
         this.cutscene_skipButton = $('<div style="position: absolute; padding: 12px 15px; right: 10px; top: 10px; background: #fff; border-radius: 100px; color: #000; font-weight: bold">&gt;</div>').get(0);
         this.cutscene_skipButton.addEventListener('click', () => {
             window.dispatchEvent(new KeyboardEvent('keyup', {
-                keyCode: PlayerPersonalSettings.keyboardSettings.cancelOrSkip[0],
+                key: PlayerPersonalSettings.keyboardSettings.cancelOrSkip[0],
             }));
         });
         document.body.appendChild(this.cutscene_skipButton);
