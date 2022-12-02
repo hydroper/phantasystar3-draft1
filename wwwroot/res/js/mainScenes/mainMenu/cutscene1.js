@@ -15,13 +15,10 @@ export function cutscene1_show(scene) {
     orakioVersusLayaImg.style.top = `${30}px`;
 
     scene.cutscene_nextPart(() => {
-        scene.cutscene_clearPart();
         orakioVersusLayaImg.style.opacity = '1';
         scene.cutscene_nextPart(() => {
-            scene.cutscene_clearPart();
             scene.showMessageDialog('The legends of Landen, your homeland, tell of world-sweeping wars fought 1,000 years ago.');
             scene.cutscene_nextPart(() => {
-                scene.cutscene_clearPart();
                 scene.showMessageDialog('Brave Orakio sought to foil the evil schemes of the dark witch Laya and her hordes of monsters.');
                 scene.cutscene_nextPart(() => {
                     cutscene_part2(scene, orakioVersusLayaImg);
@@ -32,11 +29,9 @@ export function cutscene1_show(scene) {
 }
 
 function cutscene_part2(scene, orakioVersusLayaImg) {
-    scene.cutscene_clearPart();
     orakioVersusLayaImg.style.opacity = '0';
     scene.showMessageDialog('In the final battle, all combatants were killed, though Orakio and Laya\'s bodies were never found.');
     scene.cutscene_nextPart(() => {
-        scene.cutscene_clearPart();
         orakioVersusLayaImg.remove();
         let womanOnBeachVideo = PreloadedAssets.cutscenes_womanOnBeach.cloneNode(true);
         womanOnBeachVideo.setAttribute('autoplay', 'true');
@@ -51,24 +46,18 @@ function cutscene_part2(scene, orakioVersusLayaImg) {
         scene.showMessageDialog('The passageways between the Layan worlds and the Orakian worlds were sealed.');
 
         scene.cutscene_nextPart(() => {
-            scene.cutscene_clearPart();
             womanOnBeachVideo.style.opacity = '1';
             scene.showMessageDialog('In time, people forgot there were other worlds besides Landen.');
             scene.cutscene_nextPart(() => {
-                scene.cutscene_clearPart();
                 scene.showMessageDialog('Two months ago, a young woman washed up on the shores of Landen.');
                 scene.cutscene_nextPart(() => {
-                    scene.cutscene_clearPart();
                     scene.showMessageDialog('The woman remembered nothing of her life prior to waking up on the beach.');
                     scene.cutscene_nextPart(() => {
-                        scene.cutscene_clearPart();
                         scene.showMessageDialog('This seemingly minor event sets an epic adventure in motion...');
                         scene.cutscene_nextPart(() => {
-                            scene.cutscene_clearPart();
                             scene.hideMessageDialog();
                             womanOnBeachVideo.style.opacity = '0';
                             scene.cutscene_nextPart(() => {
-                                scene.cutscene_clearPart();
                                 cutscene1_end(scene);
                             }, 500);
                         }, 8000);

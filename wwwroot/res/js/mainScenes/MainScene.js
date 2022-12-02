@@ -70,13 +70,16 @@ export default class MainScene {
     }
 
     cutscene_clearPart() {
-        clearInterval(this.cutscene_timeoutId);
+        clearTimeout(this.cutscene_timeoutId);
         this.cutscene_timeoutId = -1;
         this.cutscene_timeoutFunction = null;
     }
 
     cutscene_nextPart(fn, nextPartMilli = 24 * 60 * 60 * 1000) {
-        this.cutscene_timeoutId = setTimeout(this.cutscene_timeoutFunction = fn, nextPartMilli);
+        this.cutscene_timeoutId = setTimeout(this.cutscene_timeoutFunction = () => {
+            this.cutscene_clearPart();
+            fn();
+        }, nextPartMilli);
     }
 
     get messageDialogIsOpen() {
