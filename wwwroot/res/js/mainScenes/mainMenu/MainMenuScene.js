@@ -3,7 +3,7 @@ import ProjectSettings from '../../ProjectSettings.js';
 import PreloadedAssets from '../../PreloadedAssets.js';
 import PlayerPersonalSettings from '../../PlayerPersonalSettings.js';
 import {cloneImage} from '../../util/ImageHelpers.js';
-import {focusNextElement, focusPrevElement} from '../../focuslock/index.js';
+import {focusNextElement, focusPrevElement} from '../../lib/focuslock/index.js';
 import {cutscene1_show} from './cutscene1.js';
 
 export default class MainMenuScene extends MainScene {

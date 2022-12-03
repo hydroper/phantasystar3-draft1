@@ -4,13 +4,13 @@ import ProjectSettings from '../../ProjectSettings.js';
 import PreloadedAssets from '../../PreloadedAssets.js';
 import PlayerPersonalSettings from '../../PlayerPersonalSettings.js';
 import {cloneImage} from '../../util/ImageHelpers.js';
-import {focusNextElement, focusPrevElement} from '../../focuslock/index.js';
+import {focusNextElement, focusPrevElement} from '../../lib/focuslock/index.js';
 import GameplayData from './GameplayData.js';
-import ECS from '../../ecs/ecs.js';
+import ECS from '../../lib/ecs/ecs.js';
 
 import {cutscene1_show} from './cutscene1.js';
 
-const world = ECS.createWorld();
+const {world} = GameplayData;
 
 function movementSystem(world) {
     const onUpdate = dt => {
@@ -47,5 +47,16 @@ export default class GameplayScene extends MainScene {
             ECS.removeEntity(world, entity, false);
         }
         GameplayData.gameplayScene = null;
+    }
+
+    beginOverworld() {
+        //
+    }
+
+    endOverworld() {
+        for (let entity of ECS.getEntities(world, [])) {
+            ECS.removeEntity(world, entity, false);
+        }
+        this.container.innerHTML = '';
     }
 }
