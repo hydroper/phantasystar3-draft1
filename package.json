@@ -6,11 +6,13 @@
   "author": "",
   "license": "ISC",
   "scripts": {
+    "build": "npm run build-js && npm run build-css",
     "build-js": "parcel build --dist-dir wwwroot/res/js/build src/Main.ts",
     "build-css": "parcel build --dist-dir wwwroot/res/css/build src/Main.scss",
+    "debug": "node debug.js",
+    "debug-serve": "sirv --dev --port 8080 wwwroot &",
     "debug-js-watch": "parcel watch --dist-dir wwwroot/res/js/build src/Main.ts",
-    "debug-css-watch": "parcel watch --dist-dir wwwroot/res/css/build src/Main.scss",
-    "debug": "sirv --dev --port 8080 wwwroot"
+    "debug-css-watch": "parcel watch --dist-dir wwwroot/res/css/build src/Main.scss"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.8.0",
