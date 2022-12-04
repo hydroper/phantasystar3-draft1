@@ -1,19 +1,24 @@
 # Phantasy Star III
 
-_Phantasy Star III: Generations of Doom_ in HTML.
+Phantasy Star III Remake.
 
-## Serve locally
+## Debug
 
-Install NPM and Sirv CLI:
-
-```
-npm install -g sirv-cli
-```
-
-Then run the following command to serve this project at `http://localhost:8080`:
+To debug the project, run in parallel:
 
 ```
-sirv --dev --port 8080 wwwroot
+npm run debug-js-watch
+npm run debug-css-watch
+npm run debug
 ```
 
-Or run simply `serve` from current working directory.
+## Build
+
+To build the project for production, run:
+
+```
+npm run build-js
+npm run build-css
+```
+
+All files go to the _wwwroot_ folder.

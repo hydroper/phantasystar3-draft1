@@ -1,0 +1,5 @@
+/node_modules
+/package-lock.json
+/wwwroot/res/js/build
+/wwwroot/res/css/build
+/.parcel-cache

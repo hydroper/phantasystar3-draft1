@@ -1,1 +1,0 @@
-sirv --dev --port 8080 wwwroot

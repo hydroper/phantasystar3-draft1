@@ -1,0 +1,28 @@
+{
+  "name": "phantasystar3",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "build-js": "parcel build --dist-dir wwwroot/res/js/build src/Main.ts",
+    "build-css": "parcel build --dist-dir wwwroot/res/css/build src/Main.scss",
+    "debug-js-watch": "parcel watch --dist-dir wwwroot/res/js/build src/Main.ts",
+    "debug-css-watch": "parcel watch --dist-dir wwwroot/res/css/build src/Main.scss",
+    "debug": "sirv --dev --port 8080 wwwroot"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.8.0",
+    "@types/createjs": "^0.0.29",
+    "@types/jquery": "^3.5.14",
+    "parcel": "^2.8.0",
+    "process": "^0.11.10",
+    "sirv-cli": "^2.0.2"
+  },
+  "dependencies": {
+    "ecs": "^0.16.0",
+    "focus-lock": "^0.11.4",
+    "jquery": "^3.6.1"
+  }
+}
