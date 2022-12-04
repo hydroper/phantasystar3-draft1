@@ -7,6 +7,7 @@ Phantasy Star III Remake.
 To debug the project, run in parallel:
 
 ```
+npm install
 npm run debug-js-watch
 npm run debug-css-watch
 npm run debug
@@ -17,6 +18,7 @@ npm run debug
 To build the project for production, run:
 
 ```
+npm install
 npm run build-js
 npm run build-css
 ```
