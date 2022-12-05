@@ -2,4 +2,5 @@
     border: 5px solid #73B3C9;
     background: #245662;
     padding: 15px;
+    @extend .scrollable-inc;
 }

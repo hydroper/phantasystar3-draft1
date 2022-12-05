@@ -8,7 +8,7 @@ To debug the project, run:
 
 ```
 npm install
-npm run debug
+node debug
 ```
 
 ## Build

@@ -25,6 +25,16 @@ html, body {
     overflow: hidden;
 }
 
+@import "./scroll";
+
+.scrollable-inc {
+    @include scrollbars(.3em, #bbb, #245662);
+}
+
+.scrollable {
+    @extend .scrollable-inc;
+}
+
 @import "./ui/TextArea";
 @import "./ui/MessageDialog";
 @import "./ui/Button";
