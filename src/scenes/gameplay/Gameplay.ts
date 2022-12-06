@@ -5,6 +5,7 @@ import Scene from '../Scene';
 import {cloneImage} from '../../util/image';
 import $ from 'jquery';
 import Cutscene1 from './Cutscene1';
+import MainMenu from '../mainMenu/MainMenu';
 
 export default class Gameplay extends Cutscene1 {
     constructor(slotNum: number) {
@@ -19,7 +20,11 @@ export default class Gameplay extends Cutscene1 {
         }
     }
 
-    destroy(): void {
+    override tick(): void {
+        super.tick();
+    }
+
+    override destroy(): void {
         super.destroy();
     }
 

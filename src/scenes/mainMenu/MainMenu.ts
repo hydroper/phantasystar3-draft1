@@ -28,6 +28,10 @@ export default class MainMenu extends Cutscene1 {
         super.destroy();
         this.mainTextArea_destroy();
         this.startGameTextArea_destroy();
+        if (this.keyPressListener != null) {
+            window.removeEventListener('keyup', this.keyPressListener as any);
+            this.keyPressListener = null;
+        }
     }
 
     override cutscene1_onComplete() {

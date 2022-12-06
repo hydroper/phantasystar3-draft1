@@ -7,7 +7,14 @@ import $ from 'jquery';
 
 export default class Cutscene1 extends Scene {
     cutscene1_begin() {
-        this.beginDialogue();
+        this.beginDialogue({
+            fullSkip: () => {
+                this.endDialogue();
+                this.destroyMessageDialog();
+                this.backgroundContainer!.innerHTML = '';
+                this.cutscene1_onComplete();
+            },
+        });
 
         let orakioVersusLayaImg = cloneImage(PreloadedAssets.cutscenes_orakioVersusLaya);
         this.backgroundContainer!.appendChild(orakioVersusLayaImg);

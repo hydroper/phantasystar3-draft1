@@ -97,6 +97,9 @@ export default class Scene {
 
     endDialogue() {
         window.removeEventListener('keyup', this.dialogue_skipListener as any);
+        if (this.dialogue_timeoutId != -1) {
+            clearTimeout(this.dialogue_timeoutId);
+        }
         this.dialogue_timeoutId = -1;
         this.dialogue_next = null;
         this.dialogue_fullSkip = null;
