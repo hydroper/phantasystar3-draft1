@@ -8,14 +8,14 @@ export default class MovementAndZOrderingSystem {
     update() {
         for (let entity of this.world.entities) {
             let mv = entity.movable;
-            if (mv != null && (mv.dx != 0 || mv.dy != 0) && entity.htmlElement != null) {
+            if (mv != null && (mv.dx != 0 || mv.dy != 0)) {
                 entity.x += mv.dx;
                 entity.y += mv.dy;
                 let cancelledDX = false, cancelledDY = false;
-                let rect = entity.rectangle;
+                let {rect} = entity;
                 for (let entity2 of this.world.entities) {
                     if (entity == entity2) continue;
-                    let rect2 = entity.rectangle;
+                    let rect2 = entity2.rect;
                     if (!cancelledDX && rect.horizontalHitTest(rect2)) {
                         cancelledDX = true;
                         entity.x -= mv.dx;

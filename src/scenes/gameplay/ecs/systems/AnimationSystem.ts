@@ -7,7 +7,7 @@ export default class AnimationSystem {
 
     update() {
         for (let entity of this.world.entities) {
-            //
+            entity.nextFrame();
         }
     }
 }

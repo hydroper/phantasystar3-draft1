@@ -18,6 +18,9 @@ export default class World {
     update() {
         // run systems
         this.movementAndZOrderingSystem!.update();
-        this.animationSystem?.update();
+    }
+
+    animationUpdate() {
+        this.animationSystem!.update();
     }
 }

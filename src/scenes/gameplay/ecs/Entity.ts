@@ -1,5 +1,6 @@
 import {Movable} from './Component';
 import Rectangle from '../../../util/rectangle';
+import type {CharacterKind, CharacterMovingState} from './CharacterEntity';
 
 export default class Entity {
     htmlElement: HTMLElement | null = null;
@@ -11,7 +12,7 @@ export default class Entity {
     constructor() {
     }
 
-    get rectangle(): Rectangle {
+    get rect(): Rectangle {
         return new Rectangle(this.x, this.y, this.rectWidth, this.rectHeight);
     }
 
@@ -21,20 +22,21 @@ export default class Entity {
 
     set movable(v) {
     }
-}
 
-export class Character extends Entity {
-    private m_movable: Movable | null = new Movable(0, 0);
-
-    constructor() {
-        super();
+    get characterKind(): CharacterKind | null {
+        return null;
     }
 
-    override get movable(): Movable | null {
-        return this.m_movable;
+    set characterKind(v) {
     }
 
-    override set movable(v) {
-        this.m_movable = v;
+    get characterMovingState(): CharacterMovingState | null {
+        return null;
+    }
+
+    set characterMovingState(v) {
+    }
+
+    nextFrame() {
     }
 }

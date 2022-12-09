@@ -1,0 +1,11 @@
+.overworld-character {
+    position: absolute;
+    overflow: hidden;
+}
+
+.overworld-character > img {
+    position: absolute;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
