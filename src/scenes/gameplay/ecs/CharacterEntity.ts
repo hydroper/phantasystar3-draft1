@@ -6,7 +6,7 @@ import PreloadedAssets from '../../../preloadedAssets';
 import {cloneImage} from '../../../util/image';
 
 export default class CharacterEntity extends Entity {
-    private m_movable: Movable | null = new Movable(0, 0);
+    private m_movable: Movable = new Movable(0, 0);
     private m_kind = CharacterKind.RHYS;
     private m_movingState = CharacterMovingState.STANDING_DOWN;
     private m_animationFrames: AnimationFrame[] | null = null;
@@ -16,12 +16,16 @@ export default class CharacterEntity extends Entity {
         super();
     }
 
+    override get isMoving(): boolean {
+        return this.m_movable!.dx != 0 || this.m_movable!.dy != 0;
+    }
+
     override get movable(): Movable | null {
         return this.m_movable;
     }
 
     override set movable(v) {
-        this.m_movable = v;
+        this.m_movable = v!;
     }
 
     override get characterKind(): CharacterKind | null {
@@ -118,7 +122,7 @@ export class CharacterAnimationData {
             new AnimationFrame(0, 0, new Rectangle(0, 0, 0, 0)),
         ],
         standingDown: [
-            new AnimationFrame(0, 0, new Rectangle(72, 0, 16, 30)),
+            new AnimationFrame(9, 15, new Rectangle(72, 0, 16, 30)),
         ],
         standingRight: [
             new AnimationFrame(0, 0, new Rectangle(0, 0, 0, 0)),

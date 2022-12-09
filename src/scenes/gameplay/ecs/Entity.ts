@@ -16,6 +16,10 @@ export default class Entity {
         return new Rectangle(this.x, this.y, this.rectWidth, this.rectHeight);
     }
 
+    get isMoving(): boolean {
+        return false;
+    }
+
     get movable(): Movable | null {
         return null;
     }
