@@ -14,6 +14,8 @@ export default class CharacterEntity extends Entity {
 
     constructor() {
         super();
+        this.rectWidth = 26 * 3;
+        this.rectHeight = 31 * 3;
     }
 
     override get isMoving(): boolean {
@@ -34,6 +36,7 @@ export default class CharacterEntity extends Entity {
 
     override set characterKind(v: CharacterKind | null) {
         this.m_kind = v!;
+        this.characterMovingState = CharacterMovingState.STANDING_DOWN;
     }
 
     override get characterMovingState(): CharacterMovingState | null {
@@ -65,8 +68,9 @@ export default class CharacterEntity extends Entity {
         let img = this.htmlElement.firstElementChild;
         el.style.width = frame.rect.width + 'px';
         el.style.height = frame.rect.height + 'px';
-        (el as any).style['margin-left'] = -frame.pivotX + 'px';
-        (el as any).style['margin-top'] = -frame.pivotY + 'px';
+        (el as any).style['margin-left'] = -frame.pivotX * 3 + 'px';
+        (el as any).style['margin-top'] = -frame.pivotY * 3 + 'px';
+        (img as any).style.transform = 'scale(3)';
         (img as any).style.right = frame.rect.x + 'px';
         (img as any).style.bottom = frame.rect.y + 'px';
     }

@@ -18,7 +18,7 @@ export default class Entity {
     }
 
     get rect(): Rectangle {
-        return new Rectangle(this.x, this.y, this.rectWidth, this.rectHeight);
+        return new Rectangle(this.x - this.rectWidth / 2, this.y - this.rectHeight / 2, this.rectWidth, this.rectHeight);
     }
 
     get isMoving(): boolean {
