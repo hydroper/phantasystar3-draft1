@@ -8,7 +8,7 @@ export default class MovementAndZOrderingSystem {
     update() {
         for (let entity of this.world.entities) {
             let mv = entity.movable;
-            if (mv != null && mv.dx != 0 && mv.dy != 0 && entity.htmlElement != null) {
+            if (mv != null && (mv.dx != 0 || mv.dy != 0) && entity.htmlElement != null) {
                 entity.x += mv.dx;
                 entity.y += mv.dy;
                 let cancelledDX = false, cancelledDY = false;
