@@ -25,8 +25,7 @@ export default class MovementAndZOrderingSystem {
                         entity.y -= mv.dy;
                     }
                 }
-                entity.htmlElement!.style.left = entity.x + 'px';
-                entity.htmlElement!.style.top = entity.y + 'px';
+                entity.reflectPosition();
             }
             // Z-ordering
             for (let entity2 of this.world.entities) {

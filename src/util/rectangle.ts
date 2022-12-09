@@ -8,18 +8,22 @@ export default class Rectangle {
     {
     }
 
-    hitTest(another: Rectangle): boolean {
-        return this.horizontalHitTest(another)
-            || this.verticalHitTest(another);
+    hitTest(other: Rectangle): boolean {
+        return this.horizontalHitTest(other)
+            || this.verticalHitTest(other);
     }
 
-    horizontalHitTest(another: Rectangle): boolean {
-        return this.x < another.x + another.width
-            && this.x + this.width > another.x;
+    horizontalHitTest(other: Rectangle): boolean {
+        return this.x < other.x + other.width
+            && this.x + this.width > other.x;
     }
 
-    verticalHitTest(another: Rectangle): boolean {
-        return this.y < another.y + another.height
-            && this.y + this.height > another.y;
+    verticalHitTest(other: Rectangle): boolean {
+        return this.y < other.y + other.height
+            && this.y + this.height > other.y;
+    }
+
+    farFrom(other: Rectangle, farInPixels: number): boolean {
+        return other.x - this.x >= farInPixels || other.y - this.y >= farInPixels;
     }
 }

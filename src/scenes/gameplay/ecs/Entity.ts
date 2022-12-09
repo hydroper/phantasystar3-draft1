@@ -12,6 +12,11 @@ export default class Entity {
     constructor() {
     }
 
+    reflectPosition() {
+        this.htmlElement!.style.left = this.x + 'px';
+        this.htmlElement!.style.top = this.y + 'px';
+    }
+
     get rect(): Rectangle {
         return new Rectangle(this.x, this.y, this.rectWidth, this.rectHeight);
     }

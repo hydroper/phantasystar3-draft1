@@ -1,6 +1,7 @@
 import type World from '../World';
 import $ from 'jquery';
 import CharacterEntity, {CharacterMovingState} from '../CharacterEntity';
+import CharacterWalkSpeed from '../CharacterWalkSpeed';
 
 export default class PartyFollowingSystem {
     constructor(private world: World) {
@@ -15,8 +16,14 @@ export default class PartyFollowingSystem {
                 // puts party character to walk to another one.
                 // if character is far away, teleport it to which one precedes it
                 // in the party order.
-                notYetImplementedPleaseImplement();
-                //
+                if (followsRect.farFrom(followerRect, 300)) {
+                    follower.x = follows.x;
+                    follower.y = follows.y;
+                    follower.reflectPosition();
+                    this.standFromTo(follower, follows);
+                } else {
+                    this.walkFromTo(follower, follows);
+                }
             } else {
                 this.standFromTo(follower, follows);
                 follower.characterMovingState = follows.characterMovingState;
@@ -27,15 +34,36 @@ export default class PartyFollowingSystem {
         }
     }
 
-    standFromTo(one: CharacterEntity, other: CharacterEntity, walking: boolean = false) {
-        if (one.x < other.x) {
-            one.characterMovingState = walking ? CharacterMovingState.WALKING_RIGHT : CharacterMovingState.STANDING_RIGHT;
-        } else if (one.y > other.y) {
-            one.characterMovingState = walking ? CharacterMovingState.WALKING_UP : CharacterMovingState.STANDING_UP;
+    private standFromTo(one: CharacterEntity, other: CharacterEntity) {
+        if (one.y > other.y) {
+            one.characterMovingState = CharacterMovingState.STANDING_UP;
+        } else if (one.y < other.y) {
+            one.characterMovingState = CharacterMovingState.STANDING_DOWN;
+        } else if (one.x < other.x) {
+            one.characterMovingState = CharacterMovingState.STANDING_RIGHT;
         } else if (one.x > other.x) {
-            one.characterMovingState = walking ? CharacterMovingState.WALKING_LEFT : CharacterMovingState.STANDING_LEFT;
+            one.characterMovingState = CharacterMovingState.STANDING_LEFT;
         } else {
-            one.characterMovingState = walking ? CharacterMovingState.WALKING_DOWN : CharacterMovingState.STANDING_DOWN;
+            one.characterMovingState = CharacterMovingState.STANDING_DOWN;
+        }
+    }
+
+    private walkFromTo(one: CharacterEntity, other: CharacterEntity) {
+        if (one.x < other.x) {
+            one.characterMovingState = CharacterMovingState.WALKING_RIGHT;
+            one.movable!.dx = CharacterWalkSpeed.X;
+        }
+        if (one.x > other.x) {
+            one.characterMovingState = CharacterMovingState.WALKING_LEFT;
+            one.movable!.dx = -CharacterWalkSpeed.X;
+        }
+        if (one.y > other.y) {
+            one.characterMovingState = CharacterMovingState.WALKING_UP;
+            one.movable!.dy = -CharacterWalkSpeed.Y;
+        }
+        if (one.y < other.y) {
+            one.characterMovingState = CharacterMovingState.WALKING_DOWN;
+            one.movable!.dy = CharacterWalkSpeed.Y;
         }
     }
 }
