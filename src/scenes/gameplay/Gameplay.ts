@@ -6,8 +6,11 @@ import {cloneImage} from '../../util/image';
 import $ from 'jquery';
 import Cutscene1 from './Cutscene1';
 import MainMenu from '../mainMenu/MainMenu';
+import World from './ecs/World';
 
 export default class Gameplay extends Cutscene1 {
+    private world = new World;
+
     constructor(slotNum: number) {
         super();
         this.initialize(slotNum);
@@ -22,6 +25,7 @@ export default class Gameplay extends Cutscene1 {
 
     override tick(): void {
         super.tick();
+        this.world.update();
     }
 
     override destroy(): void {
