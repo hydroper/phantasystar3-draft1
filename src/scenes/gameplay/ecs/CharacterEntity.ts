@@ -71,8 +71,8 @@ export default class CharacterEntity extends Entity {
         (el as any).style['margin-left'] = -frame.pivotX * 3 + 'px';
         (el as any).style['margin-top'] = -frame.pivotY * 3 + 'px';
         (img as any).style.transform = 'scale(3)';
-        (img as any).style.right = frame.rect.x + 'px';
-        (img as any).style.bottom = frame.rect.y + 'px';
+        (img as any).style.right = frame.rect.x * 3 + 'px';
+        (img as any).style.bottom = frame.rect.y * 3 + 'px';
     }
 }
 

@@ -24,6 +24,7 @@ export default class Rectangle {
     }
 
     farFrom(other: Rectangle, farInPixels: number): boolean {
-        return other.x - this.x >= farInPixels || other.y - this.y >= farInPixels;
+        if (this.hitTest(other)) return false;
+        return Math.abs(this.x, other.x) >= farInPixels || Math.abs(this.y, other.y) >= farInPixels;
     }
 }
