@@ -16,7 +16,7 @@ export default class PartyFollowingSystem {
                 // puts party character to walk to another one.
                 // if character is far away, teleport it to which one precedes it
                 // in the party order.
-                if (followsRect.farFrom(followerRect, 300)) {
+                if (followsRect.farFrom(followerRect, 450)) {
                     follower.x = follows.x;
                     follower.y = follows.y;
                     follower.reflectPosition();

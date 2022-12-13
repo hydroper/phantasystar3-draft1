@@ -47,6 +47,7 @@ class Main {
     private getFittingScale(): number {
         let ratio = baseResolution.width / baseResolution.height;
         let windowRatio = window.innerWidth / window.innerHeight;
+        // choose optimal scale ratio
         if (windowRatio > ratio) {
             return window.innerHeight / baseResolution.height;
         } else return window.innerWidth / baseResolution.width;
