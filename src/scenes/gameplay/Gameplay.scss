@@ -1,9 +1,9 @@
-.overworld-character {
+.OverworldCharacter {
     position: absolute;
     overflow: hidden;
 }
 
-.overworld-character > img {
+.OverworldCharacter > img {
     position: absolute;
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;

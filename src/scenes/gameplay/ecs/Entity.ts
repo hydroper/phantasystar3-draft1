@@ -1,6 +1,6 @@
-import {Movable} from './Component';
-import Rectangle from '../../../util/rectangle';
-import type {CharacterKind, CharacterMovingState} from './CharacterEntity';
+import {Movable} from 'app/scenes/gameplay/ecs/Component';
+import Rectangle from 'app/util/Rectangle';
+import type {CharacterKind, CharacterMovingState} from 'app/scenes/gameplay/ecs/CharacterEntity';
 
 export default class Entity {
     htmlElement: HTMLElement | null = null;

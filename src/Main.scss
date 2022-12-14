@@ -25,17 +25,18 @@ html, body {
     overflow: hidden;
 }
 
-@import "./scroll";
+@import "./util/Scroll";
 
-.scrollable-inc {
+.ScrollableInc {
     @include scrollbars(.3em, #bbb, #245662);
 }
 
-.scrollable {
-    @extend .scrollable-inc;
+.Scrollable {
+    @extend .ScrollableInc;
 }
 
-@import "./ui/TextArea";
-@import "./ui/MessageDialog";
 @import "./ui/Button";
-@import "./scenes/gameplay/style";
+@import "./ui/MessageDialog";
+@import "./ui/TextArea";
+
+@import "./scenes/gameplay/Gameplay";

@@ -1,7 +1,7 @@
-import type World from '../World';
+import type World from 'app/scenes/gameplay/ecs/World';
 import $ from 'jquery';
-import CharacterEntity, {CharacterMovingState} from '../CharacterEntity';
-import CharacterWalkSpeed from '../CharacterWalkSpeed';
+import CharacterEntity, {CharacterMovingState} from 'app/scenes/gameplay/ecs/CharacterEntity';
+import CharacterWalkSpeed from 'app/scenes/gameplay/ecs/CharacterWalkSpeed';
 
 export default class PartyFollowingSystem {
     constructor(private world: World) {

@@ -1,4 +1,4 @@
-const keyboardSettings = {
+const KeyboardSettings = {
     left: ['LEFT', 'ARROWLEFT', 'A'],
     right: ['RIGHT', 'ARROWRIGHT', 'D'],
     up: ['UP', 'ARROWUP', 'W'],
@@ -8,4 +8,4 @@ const keyboardSettings = {
     openMenu: ['ESC', 'ESCAPE'],
 };
 
-export default keyboardSettings;
+export default KeyboardSettings;

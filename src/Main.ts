@@ -1,6 +1,6 @@
-import baseResolution from './baseResolution';
-import keyboardSettings from './keyboardSettings';
-import Preloader from './scenes/Preloader';
+import BaseResolution from 'app/BaseResolution';
+import KeyboardSettings from 'app/KeyboardSettings';
+import Preloader from 'app/scenes/preloader/Preloader';
 
 class Main {
     container: HTMLElement | null = null;
@@ -11,8 +11,8 @@ class Main {
 
     initialize() {
         this.container = document.getElementById('gameContainer');
-        this.container!.style.width = `${baseResolution.width}px`;
-        this.container!.style.height = `${baseResolution.height}px`;
+        this.container!.style.width = `${BaseResolution.width}px`;
+        this.container!.style.height = `${BaseResolution.height}px`;
         this.handleResize();
 
         window.addEventListener('resize', this.handleResize.bind(this));
@@ -20,16 +20,16 @@ class Main {
 
         document.getElementById('skipMessageBtn')?.addEventListener('click', evt => {
             window.dispatchEvent(new KeyboardEvent('keyup', {
-                key: keyboardSettings.cancelOrSkip[0],
+                key: KeyboardSettings.cancelOrSkip[0],
             }));
         });
         document.getElementById('skipCutsceneBtn')?.addEventListener('click', evt => {
             window.dispatchEvent(new KeyboardEvent('keyup', {
-                key: keyboardSettings.openMenu[0],
+                key: KeyboardSettings.openMenu[0],
             }));
         });
         window.addEventListener('keyup', e => {
-            if (keyboardSettings.okOrTalk.includes(e.key.toUpperCase())) {
+            if (KeyboardSettings.okOrTalk.includes(e.key.toUpperCase())) {
                 (document.activeElement as any).click();
             }
         });
@@ -40,17 +40,17 @@ class Main {
         let scale = this.getFittingScale();
         let container = document.getElementById('gameContainer');
         container!.style.transform = `scale(${scale})`;
-        container!.style.left = `${window.innerWidth / 2 - baseResolution.width / 2}px`;
-        container!.style.top = `${window.innerHeight / 2 - baseResolution.height / 2}px`;
+        container!.style.left = `${window.innerWidth / 2 - BaseResolution.width / 2}px`;
+        container!.style.top = `${window.innerHeight / 2 - BaseResolution.height / 2}px`;
     }
 
     private getFittingScale(): number {
-        let ratio = baseResolution.width / baseResolution.height;
+        let ratio = BaseResolution.width / BaseResolution.height;
         let windowRatio = window.innerWidth / window.innerHeight;
         // choose optimal scale ratio
         if (windowRatio > ratio) {
-            return window.innerHeight / baseResolution.height;
-        } else return window.innerWidth / baseResolution.width;
+            return window.innerHeight / BaseResolution.height;
+        } else return window.innerWidth / BaseResolution.width;
     }
 }
 

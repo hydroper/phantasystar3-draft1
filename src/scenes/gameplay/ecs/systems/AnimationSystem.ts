@@ -1,4 +1,4 @@
-import type World from '../World';
+import type World from 'app/scenes/gameplay/ecs/World';
 import $ from 'jquery';
 
 export default class AnimationSystem {

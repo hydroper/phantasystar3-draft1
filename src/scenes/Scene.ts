@@ -1,5 +1,5 @@
-import baseResolution from '../baseResolution';
-import keyboardSettings from '../keyboardSettings';
+import BaseResolution from 'app/BaseResolution';
+import KeyboardSettings from 'app/KeyboardSettings';
 import $ from 'jquery';
 
 export default class Scene {
@@ -34,7 +34,7 @@ export default class Scene {
 
         this.tickIntervalId = setInterval(() => {
             this.tick();
-        }, 1_000 / baseResolution.frameRate);
+        }, 1_000 / BaseResolution.frameRate);
         this.tick();
     }
 
@@ -63,7 +63,7 @@ export default class Scene {
 
         window.addEventListener('keyup', this.dialogue_skipListener = (e: KeyboardEvent) => {
             // skip
-            if (keyboardSettings.cancelOrSkip.includes(e.key.toUpperCase()) && this.dialogue_next != null) {
+            if (KeyboardSettings.cancelOrSkip.includes(e.key.toUpperCase()) && this.dialogue_next != null) {
                 if (this.isTypingMessageDialog) {
                     this.skipToMessageDialogEnd();
                 } else if (this.dialogue_timeoutId != -1) {
@@ -73,7 +73,7 @@ export default class Scene {
                 }
             }
             // full-skip
-            else if (keyboardSettings.openMenu.includes(e.key.toUpperCase()) && this.dialogue_fullSkip != null) {
+            else if (KeyboardSettings.openMenu.includes(e.key.toUpperCase()) && this.dialogue_fullSkip != null) {
                 this.destroyMessageDialog();
                 if (this.dialogue_timeoutId != -1) {
                     clearTimeout(this.dialogue_timeoutId);
@@ -114,12 +114,12 @@ export default class Scene {
         }
         this.messageDialogIsOpen = true;
         this.messageDialogElement = $(`
-            <div class="message-dialog" style="
+            <div class="MessageDialog" style="
                 position: absolute; width: 470px; height: 50px;
             "></div>`).get(0)!;
         document.getElementById('messageDialogContainer')?.appendChild(this.messageDialogElement);
-        this.messageDialogElement.style.left = `${baseResolution.centerX(this.messageDialogElement.offsetWidth)}px`;
-        this.messageDialogElement.style.top = `${baseResolution.height - this.messageDialogElement.offsetHeight - 30}px`;
+        this.messageDialogElement.style.left = `${BaseResolution.centerX(this.messageDialogElement.offsetWidth)}px`;
+        this.messageDialogElement.style.top = `${BaseResolution.height - this.messageDialogElement.offsetHeight - 30}px`;
         let split = text.split('');
         this.messageDialogRemaining = split;
         this.messageDialogTypingIntervalId = setInterval(() => {

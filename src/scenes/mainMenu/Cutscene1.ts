@@ -1,8 +1,8 @@
-import baseResolution from '../../baseResolution';
-import keyboardSettings from '../../keyboardSettings';
-import PreloadedAssets from '../../preloadedAssets';
-import Scene from '../Scene';
-import {cloneImage} from '../../util/image';
+import BaseResolution from 'app/BaseResolution';
+import KeyboardSettings from 'app/KeyboardSettings';
+import PreloadedAssets from 'app/PreloadedAssets';
+import Scene from 'app/scenes/Scene';
+import {cloneImage} from 'app/util/Image';
 import $ from 'jquery';
 
 export default class Cutscene1 extends Scene {
@@ -22,7 +22,7 @@ export default class Cutscene1 extends Scene {
         orakioVersusLayaImg.style.transition = 'opacity 0.5s';
         orakioVersusLayaImg.style.transform = 'scale(0.7)';
         orakioVersusLayaImg.style.position = 'absolute';
-        orakioVersusLayaImg.style.left = `${baseResolution.centerX(orakioVersusLayaImg.offsetWidth)}px`;
+        orakioVersusLayaImg.style.left = `${BaseResolution.centerX(orakioVersusLayaImg.offsetWidth)}px`;
         orakioVersusLayaImg.style.top = `${30}px`;
 
         this.dialogueNextPart(() => {
@@ -52,7 +52,7 @@ export default class Cutscene1 extends Scene {
             womanOnBeachVideo.style.transform = 'scale(0.7)';
             womanOnBeachVideo.style.opacity = '0';
             womanOnBeachVideo.style.position = 'absolute';
-            womanOnBeachVideo.style.left = `${baseResolution.centerX(womanOnBeachVideo.offsetWidth)}px`;
+            womanOnBeachVideo.style.left = `${BaseResolution.centerX(womanOnBeachVideo.offsetWidth)}px`;
             womanOnBeachVideo.style.top = `${30}px`;
             womanOnBeachVideo.click();
             this.showMessageDialog('The passageways between the Layan worlds and the Orakian worlds were sealed.');

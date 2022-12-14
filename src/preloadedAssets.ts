@@ -1,4 +1,4 @@
-import {createVideoFromBinary} from './util/video';
+import {createVideoFromBinary} from 'app/util/Video';
 
 export default class PreloadedAssets {
     /**

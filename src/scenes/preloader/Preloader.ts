@@ -1,9 +1,9 @@
-import baseResolution from '../baseResolution';
-import keyboardSettings from '../keyboardSettings';
-import PreloadedAssets from '../preloadedAssets';
-import Scene from './Scene';
-import BrandPresents from './BrandPresents';
-import {cloneImage} from '../util/image';
+import BaseResolution from 'app/BaseResolution';
+import KeyboardSettings from 'app/KeyboardSettings';
+import PreloadedAssets from 'app/PreloadedAssets';
+import Scene from 'app/scenes/Scene';
+import BrandPresents from 'app/scenes/brandPresents/BrandPresents';
+import {cloneImage} from 'app/util/Image';
 import $ from 'jquery';
 
 export default class Preloader extends Scene {
@@ -19,7 +19,7 @@ export default class Preloader extends Scene {
 
     override initialize(): void {
         super.initialize();
-        this.uiContainer!.innerHTML = `<div class="textarea" style="width: 300px" id="preloadingAdvice"></div>`;
+        this.uiContainer!.innerHTML = `<div class="TextArea" style="width: 300px" id="preloadingAdvice"></div>`;
 
         this.queue.loadFile({id: 'cutscenes_orakioVersusLaya', src: 'res/img/cutscenes/orakio-versus-laya-1.png'});
         this.queue.loadFile({id: 'cutscenes_womanOnBeach', src: 'res/img/cutscenes/woman-on-beach.mp4', type: createjs.AbstractLoader.BINARY});
@@ -69,8 +69,8 @@ export default class Preloader extends Scene {
         let advice = this.uiContainer!.querySelector('#preloadingAdvice') as HTMLElement;
         advice.innerText = `Preloading assets${'.'.repeat(this.dots)}`;
         advice.style.position = 'absolute';
-        advice.style.left = `${baseResolution.centerX(advice.offsetWidth)}px`;
-        advice.style.top = `${baseResolution.centerY(advice.offsetHeight)}px`;
+        advice.style.left = `${BaseResolution.centerX(advice.offsetWidth)}px`;
+        advice.style.top = `${BaseResolution.centerY(advice.offsetHeight)}px`;
         this.dots++;
         this.dots %= 4;
     }

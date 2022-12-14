@@ -1,8 +1,8 @@
-import baseResolution from '../../baseResolution';
-import keyboardSettings from '../../keyboardSettings';
-import PreloadedAssets from '../../preloadedAssets';
-import Scene from '../Scene';
-import {cloneImage} from '../../util/image';
+import BaseResolution from 'app/BaseResolution';
+import KeyboardSettings from 'app/KeyboardSettings';
+import PreloadedAssets from 'app/PreloadedAssets';
+import Scene from 'app/scenes/Scene';
+import {cloneImage} from 'app/util/Image';
 import $ from 'jquery';
 
 export default class Cutscene1 extends Scene {
@@ -11,8 +11,8 @@ export default class Cutscene1 extends Scene {
         let outerSpaceImg = cloneImage(PreloadedAssets.cutscenes_outerspace1);
         outerSpaceImg.style.position = 'absolute';
         this.backgroundContainer!.appendChild(outerSpaceImg);
-        outerSpaceImg.style.width = `${baseResolution.width}px`;
-        outerSpaceImg.style.height = `${baseResolution.height}px`;
+        outerSpaceImg.style.width = `${BaseResolution.width}px`;
+        outerSpaceImg.style.height = `${BaseResolution.height}px`;
         outerSpaceImg.style.transition = `opacity 0.5s`;
         outerSpaceImg.style.opacity = '0';
     

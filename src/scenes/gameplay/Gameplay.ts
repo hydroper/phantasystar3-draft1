@@ -1,12 +1,12 @@
-import baseResolution from '../../baseResolution';
-import keyboardSettings from '../../keyboardSettings';
-import PreloadedAssets from '../../preloadedAssets';
-import Scene from '../Scene';
-import {cloneImage} from '../../util/image';
+import BaseResolution from 'app/BaseResolution';
+import KeyboardSettings from 'app/KeyboardSettings';
+import PreloadedAssets from 'app/PreloadedAssets';
+import Scene from 'app/scenes/Scene';
+import {cloneImage} from 'app/util/Image';
 import $ from 'jquery';
-import Cutscene1 from './Cutscene1';
-import MainMenu from '../mainMenu/MainMenu';
-import World from './ecs/World';
+import Cutscene1 from 'app/scenes/gameplay/Cutscene1';
+import MainMenu from 'app/scenes/mainMenu/MainMenu';
+import World from 'app/scenes/gameplay/ecs/World';
 
 export default class Gameplay extends Cutscene1 {
     private world = new World;

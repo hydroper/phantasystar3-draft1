@@ -1,8 +1,8 @@
-import Entity from './Entity';
-import MovementAndZOrderingSystem from './systems/MovementAndZOrderingSystem';
-import AnimationSystem from './systems/AnimationSystem';
-import PartyFollowingSystem from './systems/PartyFollowingSystem';
-import CharacterEntity from './CharacterEntity';
+import Entity from 'app/scenes/gameplay/ecs/Entity';
+import MovementAndZOrderingSystem from 'app/scenes/gameplay/ecs/systems/MovementAndZOrderingSystem';
+import AnimationSystem from 'app/scenes/gameplay/ecs/systems/AnimationSystem';
+import PartyFollowingSystem from 'app/scenes/gameplay/ecs/systems/PartyFollowingSystem';
+import CharacterEntity from 'app/scenes/gameplay/ecs/CharacterEntity';
 
 export default class World {
     readonly entities: Entity[] = [];

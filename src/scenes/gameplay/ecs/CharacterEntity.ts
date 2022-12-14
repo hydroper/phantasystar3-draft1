@@ -1,9 +1,9 @@
-import Entity from './Entity';
-import {Movable} from './Component';
-import Rectangle from '../../../util/rectangle';
-import AnimationFrame from './AnimationFrame';
-import PreloadedAssets from '../../../preloadedAssets';
-import {cloneImage} from '../../../util/image';
+import Entity from 'app/scenes/gameplay/ecs/Entity';
+import {Movable} from 'app/scenes/gameplay/ecs/Component';
+import Rectangle from 'app/util/Rectangle';
+import AnimationFrame from 'app/scenes/gameplay/ecs/AnimationFrame';
+import PreloadedAssets from 'app/PreloadedAssets';
+import {cloneImage} from 'app/util/Image';
 
 export default class CharacterEntity extends Entity {
     private m_movable: Movable = new Movable(0, 0);
@@ -60,7 +60,7 @@ export default class CharacterEntity extends Entity {
 
     private renderFrame() {
         if (this.htmlElement == null) {
-            this.htmlElement = $('<div class="overworld-character"></div>').get(0)!;
+            this.htmlElement = $('<div class="OverworldCharacter"></div>').get(0)!;
             this.htmlElement.appendChild(this.m_kind.animationImage());
         }
         let frame = this.m_animationFrames![this.m_currentFrame];

@@ -1,4 +1,4 @@
-.btn {
+.Button {
     background: #4C5560;
     color: #fff;
     font-family: "Verdana";
@@ -9,12 +9,7 @@
     outline: 0;
 }
 
-.btn-primary {
-    background: #3b6877;
-    border: 5px solid #477b8d;
-}
-
-.btn:hover {
+.Button:hover {
     border: 5px solid #647e9c;
     color: #fff;
     background: #5e738b;
@@ -22,7 +17,7 @@
     outline: 0;
 }
 
-.btn:focus {
+.Button:focus {
     border: 5px solid #73B3C9;
     color: #fff;
     background: #395B83;
