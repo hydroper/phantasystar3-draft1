@@ -1,6 +1,6 @@
 # Phantasy Star III
 
-Phantasy Star III Remake.
+Phantasy Star III Remake. Demo: [https://hydroper.github.io/preview/ps3@0.1.1](https://hydroper.github.io/preview/ps3@0.1.1)
 
 ## Debug
 
